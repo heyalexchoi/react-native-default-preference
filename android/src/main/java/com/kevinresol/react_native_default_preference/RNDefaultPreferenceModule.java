@@ -40,6 +40,11 @@ public class RNDefaultPreferenceModule extends ReactContextBaseJavaModule {
   }
 
   @ReactMethod
+  public void getBoolean(String key, Boolean defaultValue, Promise promise) {
+    promise.resolve(getPreferences().getBoolean(key, defaultValue));
+  }
+
+  @ReactMethod
   public void set(String key, String value, Promise promise) {
     getEditor().putString(key, value).commit();
     promise.resolve(null);
